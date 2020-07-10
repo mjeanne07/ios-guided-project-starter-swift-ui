@@ -7,12 +7,33 @@
 //
 
 import SwiftUI
+/* components of swift UI
+ -Views
+ -Modifiers
+
+ */
 
 struct ContentView: View {
+
+    @State var artistName = ""
+    @State var artistGenre = ""
     
     var body: some View {
-        VStack() {
-            Text("Hello, World")
+        VStack {
+            Text("Search for artists with the iTunes API!")
+            SearchBar(artistName: $artistName, artistGenre: $artistGenre)
+            Text(artistName)
+                .font(.largeTitle)
+                .bold
+            if !artistGenre.isEmpty {
+                HStack {
+                    Text("Artist Genre:")
+                        .foregroundColor(.secondary)
+                    Text(artistGenre)
+                        .font(.subheadline)
+                }
+            }
+            Spacer()
         }
     }
 }
